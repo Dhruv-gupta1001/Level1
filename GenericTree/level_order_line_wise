@@ -25,3 +25,27 @@ public static void levelOrderLinewise(Node node){
   }
   
   //sir ->without using height
+  
+  public static void levelOrderLinewise(Node node){
+    // write your code here
+    
+    Queue<Node> mQ=new ArrayDeque<>();
+    Queue<Node> hQ=new ArrayDeque<>();
+    mQ.add(node);
+    
+    while(mQ.size()>0){
+        node = mQ.remove();
+        
+        System.out.print(node.data+" ");
+        for(Node child:node.children){
+            hQ.add(child);
+        }
+        
+        if(mQ.size()==0){
+            mQ=hQ;
+            hQ=new ArrayDeque<>();
+            System.out.println();
+        }
+    }
+    
+  }
