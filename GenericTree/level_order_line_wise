@@ -1,0 +1,27 @@
+
+
+//self
+public static void levelOrderLinewise(Node node){
+    // write your code here
+    Queue<Node> mainQ= new ArrayDeque<>();
+    Queue<Node> helperQ= new ArrayDeque<>();
+    
+    int h= height(node);
+    mainQ.add(node);
+    
+    for(int i=0;i<=h;i++){
+        while(mainQ.size()>0){
+            node = mainQ.remove();
+            System.out.print(node.data+" ");
+            for(Node child: node.children){
+                helperQ.add(child);
+            }
+        }
+        System.out.println();
+        while(helperQ.size()>0){
+            mainQ.add(helperQ.remove());
+        }
+    }
+  }
+  
+  //sir ->without using height
