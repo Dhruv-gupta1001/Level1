@@ -1,0 +1,42 @@
+public void kReverse(int k) {
+      // write your code here
+      if(this.size<=k || k==0){
+        return ;
+      }
+      
+      int time=this.size/k;
+
+      LinkedList prev=null;
+      LinkedList curr=new LinkedList();
+      while(time-->0){
+        int x=k;
+        while(x-->0){
+          int f=this.getFirst();
+          curr.addFirst(f);
+          this.removeFirst();
+        }
+        // prev.head=curr.head;
+        // prev.size=curr.size;
+        // prev.tail=curr.tail;
+        // curr=new LinkedList();
+        // prev.tail.next=curr.head;
+        if(prev==null){
+          prev=curr;
+        }else{
+          prev.tail.next=curr.head;
+          prev.tail=curr.tail;
+          prev.size+=curr.size;
+        }
+        curr=new LinkedList();
+        
+      }
+      while(this.size()>0){
+        int d=this.getFirst();
+        prev.addLast(d);
+        this.removeFirst();
+      }
+      this.head=prev.head;
+      this.tail=prev.tail;
+      this.size=prev.size;
+      // System.out.println(prev.head.data);
+    }
